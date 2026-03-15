@@ -4,43 +4,32 @@ const headerNav = document.getElementById("header-nav");
 const navOverlay = document.getElementById("nav-overlay");
 const desktopQuery = window.matchMedia("(min-width: 64rem)");
 
-// open -> header nav visible not inert and overlay must be visible
-
-menuOpen.addEventListener("click", () => {
+function openMenu() {
   menuOpen.ariaExpanded = true;
-
   headerNav.hidden = false;
   headerNav.inert = false;
-
   navOverlay.hidden = false;
-});
+}
 
-menuClose.addEventListener("click", () => {
+function closeMenu() {
+  menuOpen.ariaExpanded = false;
   headerNav.hidden = true;
   headerNav.inert = true;
-
   navOverlay.hidden = true;
-});
-
-navOverlay.addEventListener("click", () => {
-  headerNav.hidden = true;
-  headerNav.inert = true;
-
-  navOverlay.hidden = true;
-});
+}
 
 function handleBreakpoint(e) {
   if (e.matches) {
-    headerNav.hidden = false;
-    headerNav.inert = false;
-    navOverlay.hidden = true;
+    openMenu();
   } else {
-    headerNav.hidden = true;
-    headerNav.inert = true;
-
-    navOverlay.hidden = true;
+    closeMenu();
   }
+  navOverlay.hidden = true;
 }
 
-desktopQuery.addEventListener("change", handleBreakpoint);
 handleBreakpoint(desktopQuery);
+
+desktopQuery.addEventListener("change", handleBreakpoint);
+menuOpen.addEventListener("click", openMenu);
+menuClose.addEventListener("click", closeMenu);
+navOverlay.addEventListener("click", closeMenu);

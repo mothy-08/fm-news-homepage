@@ -14,6 +14,7 @@
   --text-2xl: 1.5rem;
   --text-3xl: 1.875rem;
   --text-4xl: 2.75rem;
+  --text-5xl: 3rem;
 
   --font-regular: 400;
   --font-bold: 600;
@@ -117,6 +118,12 @@ body {
   font-size: var(--fs-body);
 }
 
+p {
+  line-height: 1.5;
+  color: var(--fg-muted);
+  font-size: var(--text-sm);
+}
+
 :is(header, main) {
   width: min(1110px, 91.47vw);
   margin-inline: auto;
@@ -201,7 +208,8 @@ main {
 }
 
 .hero-section {
-  display: grid;
+  display: flex;
+  flex-direction: column;
   gap: 24px;
 
   h1 {
@@ -211,14 +219,14 @@ main {
   }
 }
 
-p {
-  line-height: 1.5;
-  color: var(--fg-muted);
-  font-size: var(--text-sm);
+:is(.hero-content-wrapper, .hero-desc-cta-wrapper) {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
 }
 
 .cta {
-  justify-self: start;
+  align-self: flex-start;
 
   padding: 1.33em 2.17em;
 
@@ -277,6 +285,8 @@ aside li {
 
   display: flex;
   flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
   gap: 32px;
 }
 
@@ -332,5 +342,44 @@ aside li {
       justify-content: flex-end;
       gap: 40px;
     }
+  }
+
+  main {
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-areas:
+      "hero hero aside"
+      "hero hero aside"
+      "interest interest interest";
+    gap: 64px 30px;
+  }
+
+  .hero-section {
+    grid-area: hero;
+
+    h1 {
+      font-size: var(--text-5xl);
+    }
+  }
+
+  .hero-content-wrapper {
+    flex-direction: row;
+    gap: 90px;
+  }
+
+  .hero-desc-cta-wrapper {
+    justify-content: space-between;
+  }
+
+  aside {
+    grid-area: aside;
+  }
+
+  .interest-section {
+    grid-area: interest;
+  }
+
+  .interest-list {
+    flex-direction: row;
+    justify-content: space-between;
   }
 }
