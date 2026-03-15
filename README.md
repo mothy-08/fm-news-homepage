@@ -1,6 +1,6 @@
 # News Homepage
 
-This is a solution to the [News homepage challenge on Frontend Mentor](https://www.frontendmentor.io/challenges/news-homepage-H6SWTa1MFl).
+My solution to the [News Homepage Challenge on Frontend Mentor](https://www.frontendmentor.io/challenges/news-homepage-H6SWTa1MFl).
 
 Users should be able to:
 
@@ -21,4 +21,3 @@ Users should be able to:
 - HTML
 - CSS
 - JS
-
